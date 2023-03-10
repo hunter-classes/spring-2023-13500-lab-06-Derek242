@@ -9,10 +9,11 @@ char shiftChar(char c, int rshift){\
         //Lowercase
         if (c + rshift < 123){
             return c + rshift;
+        } else if (c + rshift > 122){
+            return c+rshift - 26;
         }
-    } else if (c + rshift > 122){
-        return c+rshift - 26;
     } 
+
 
     if (c >= 65 && c <= 90){
         //Uppercase
