@@ -1,0 +1,2 @@
+#include <iostream>
+std::string encryptVigenere(std::string plaintext, std::string keyword);

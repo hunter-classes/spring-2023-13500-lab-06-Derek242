@@ -1,16 +1,25 @@
-main: main.o funcs.o
-	g++ -o main main.o funcs.o
+OBJECTS = caesar.o vigenere.o decrypt.o
 
-tests: tests.o funcs.o
-	g++ -o tests tests.o funcs.o
+main: main.o $(OBJECTS) 
+	g++ -o main main.o $(OBJECTS)
 
+tests: tests.o $(OBJECTS)
+	g++ -o tests tests.o $(OBJECTS)
 
+test-acii: test-ascii.o
+	g++ -o test-ascii test-ascii.o
 
-funcs.o: funcs.cpp funcs.h
+funcs.o: funcs.cpp funcs.h 
 
 main.o: main.cpp funcs.h
 
-tests.o: tests.cpp doctest.h funcs.h
+caesar.o: caesar.cpp caesar.h
+
+vingenere.o: vigenere.cpp vigenere.h
+
+decrypt.o: decrypt.cpp decrypt.h
+
+tests.o: tests.cpp doctest.h funcs.h caesar.h vigenere.h decrypt.h
 
 clean:
-	rm -f main.o funcs.o tests.o
+	rm -f main tests main.o tests.o test.o $(OBJECTS)
